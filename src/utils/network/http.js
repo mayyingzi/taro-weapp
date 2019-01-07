@@ -29,7 +29,7 @@ export default {
     })
   },
 
-  comHttp(config) {
+  comHttp(config, errors) {
     if (!config.url) {
       return Promise.reject(new Error('request url cannot be empty'));
     }
@@ -58,7 +58,7 @@ export default {
 
             return resolve(res.data.data)
           default:
-            errorHandle.default()
+            errors ? errorHandle.default(res.data) : errors(res.data)
             Taro.hideNavigationBarLoading()
 
             reject(new Error(res.data.msg))
@@ -67,7 +67,7 @@ export default {
 
       } catch (error) {
         Taro.hideNavigationBarLoading()
-        errorHandle.default()
+        errors ? errorHandle.default(error) : errors(error)
 
         reject(new Error('网络请求异常'))
       }

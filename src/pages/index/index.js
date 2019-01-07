@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 // UI
-import {AtButton, AtFloatLayout, AtSegmentedControl} from 'taro-ui'
+import {AtButton, AtFloatLayout, AtSegmentedControl, AtIcon, AtTabBar} from 'taro-ui'
 
 import { connect } from '@tarojs/redux'
 
@@ -39,6 +39,7 @@ class Index extends Component {
       floatTit: '这是个标题',
       floatOpen: false,
       curSeg: 0,
+      tabCur: 0,
       segmentArr: ['标签页1', '标签页2', '标签页3']
     }
   }
@@ -55,7 +56,7 @@ class Index extends Component {
     const res = await Http.get('/query', {
       name: '名称'
     })
-    // console.log(res)
+    console.log(res)
   }
   componentWillUnmount () { }
 
@@ -75,12 +76,21 @@ class Index extends Component {
   }
   segmentClick (value) {
     this.setState({
-      curSeg: value.currentTarget.dataset.eHandleclickAA
+      curSeg: value
+    })
+  }
+  // tab点击
+  tabClick (value) {
+    this.setState({
+      tabCur: value
     })
   }
   render () {
     return (
       <View className='indexPage'>
+        <AtIcon value='home' size='30' color='#F00'></AtIcon>
+        <AtIcon value='user' size='30' color='#F00'></AtIcon>
+        <AtIcon value='shopping-cart' size='30' color='#F00'></AtIcon>
         <Button className='add_btn' onClick={this.props.add}>+</Button>
         <Button className='dec_btn' onClick={this.props.dec}>-</Button>
         <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
@@ -112,6 +122,17 @@ class Index extends Component {
           ? <View className='tab-content'>3</View>
           : null
         }
+
+        <AtTabBar
+          fixed
+          tabList={[
+            { title: '待办事项', iconType: 'bullet-list', text: 'new' },
+            { title: '拍照', iconType: 'camera' },
+            { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
+          ]}
+          onClick={this.tabClick.bind(this)}
+          current={this.state.tabCur}
+        />
       </View>
     )
   }
