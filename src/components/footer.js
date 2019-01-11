@@ -1,6 +1,8 @@
 import Taro, {
   Component
 } from '@tarojs/taro'
+// common uitls
+import {jumpUrl} from '../utils/common'
 // ui
 import {
   AtTabBar
@@ -11,14 +13,26 @@ class Footer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      tabCur: 0,
+      tabUrl: [
+        '/pages/index/index',
+        '/pages/order/index',
+        '/pages/user/index'
+      ],
     }
   }
   // tab点击
   tabClick (value) {
-    this.setState({
-      tabCur: value
+    // console.log(`当前的索引值：${value}`)
+    // console.log(`curInd：${this.props.curInd}`)
+    this.props.curInd
+    if(value === this.props.curInd) {
+      return
+    }
+
+    jumpUrl(this.state.tabUrl[value], {
+      method: 'redirectTo'
     })
+
   }
 
   render () {
@@ -27,12 +41,12 @@ class Footer extends Component {
         <AtTabBar
           fixed
           tabList={[
-            { title: '待办事项', iconType: 'bullet-list', text: 'new' },
-            { title: '拍照', iconType: 'camera' },
-            { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
+            { title: '首页',iconPrefixClass: 'iconfont', iconType: 'home', text: '' },
+            { title: '订单', iconPrefixClass: 'iconfont', iconType: 'order'},
+            { title: '我的', iconPrefixClass: 'iconfont', iconType: 'wode'}
           ]}
           onClick={this.tabClick.bind(this)}
-          current={this.state.tabCur}
+          current={this.props.curInd}
         />
       </View>
     )

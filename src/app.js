@@ -7,6 +7,9 @@ import Index from './pages/index'
 import configStore from './store'
 
 import './app.styl'
+// 自定义iconfont
+import './assets/fonts/iconfont.css'
+
 
 const store = configStore()
 
@@ -14,7 +17,9 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/order/index',
+      'pages/user/index'
     ],
     window: {
       backgroundTextStyle: 'light',

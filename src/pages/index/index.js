@@ -1,7 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 // UI
-import {AtButton, AtFloatLayout, AtSegmentedControl, AtIcon, AtTabBar} from 'taro-ui'
+import {AtButton, AtFloatLayout, AtSegmentedControl, AtIcon} from 'taro-ui'
+
+import Footer from '../../components/footer'
 
 import { connect } from '@tarojs/redux'
 
@@ -39,7 +41,6 @@ class Index extends Component {
       floatTit: '这是个标题',
       floatOpen: false,
       curSeg: 0,
-      tabCur: 0,
       segmentArr: ['标签页1', '标签页2', '标签页3']
     }
   }
@@ -79,16 +80,11 @@ class Index extends Component {
       curSeg: value
     })
   }
-  // tab点击
-  tabClick (value) {
-    this.setState({
-      tabCur: value
-    })
-  }
+
   render () {
     return (
       <View className='indexPage'>
-        <AtIcon value='home' size='30' color='#F00'></AtIcon>
+        <AtIcon prefixClass='iconfont' value='home' size='30' color='#F00'></AtIcon>
         <AtIcon value='user' size='30' color='#F00'></AtIcon>
         <AtIcon value='shopping-cart' size='30' color='#F00'></AtIcon>
         <Button className='add_btn' onClick={this.props.add}>+</Button>
@@ -122,17 +118,7 @@ class Index extends Component {
           ? <View className='tab-content'>3</View>
           : null
         }
-
-        <AtTabBar
-          fixed
-          tabList={[
-            { title: '待办事项', iconType: 'bullet-list', text: 'new' },
-            { title: '拍照', iconType: 'camera' },
-            { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
-          ]}
-          onClick={this.tabClick.bind(this)}
-          current={this.state.tabCur}
-        />
+        <Footer curInd={0}></Footer>
       </View>
     )
   }

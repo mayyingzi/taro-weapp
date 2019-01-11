@@ -71,7 +71,7 @@ taro build --type h5 --watch
 ```
 设置script 参数(alpha、bata、release，分别对应内测、公测、正式常量) :--host=
 具体执行指令：使用内测环境变量
-# npm run dev:h5 --host=alpha
+# npm run dev:weapp --host=alpha
 ```
 
 

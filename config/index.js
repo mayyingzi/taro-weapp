@@ -52,6 +52,7 @@ const config = {
 
           }
         },
+        // 小程序央视引用本地资源内联配置
         url: {
           enable: true,
           config: {
