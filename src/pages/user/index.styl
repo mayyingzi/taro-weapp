@@ -1,0 +1,72 @@
+
+@import '../../assets/variable.styl';
+
+.userIndex
+  font-size 32px
+  color #333
+  .header
+    background-color $sysColor
+    padding 40px 0
+    width 100%
+    margin-bottom 30px
+    .avatar
+      width 150px
+      height 150px
+      margin 0 auto 30px
+      border-radius 100%
+      background-color #ccc
+      Image
+        width 100%
+        height 100%
+        border-radius 100%
+    .name
+      text-align center
+      color #fff
+      font-size 32px
+      padding 0 40px
+  .perPart
+    background-color #fff
+    border-bottom $borderColor
+    border-top $borderColor
+    margin-bottom 30px
+    .tit
+      border-bottom $borderColor
+      padding 20px
+      display flex
+      .iflex
+        flex 1
+        padding-right 20px
+  .orderItem
+    background-color #fff
+    border-bottom $borderColor
+    border-top $borderColor
+    .item
+      display flex
+      flex-direction raw
+      text-align center
+      .per
+        flex 1
+        padding 40px 0
+        border-left $borderColor
+        color #111
+        font-size 28px
+        .desc
+          padding-top 14px
+        &:first-child
+          border 0
+  .acBox
+    padding 20px
+    .acPer
+      background #efefef
+      border-radius 8px
+      padding 12px
+      display flex
+      align-items center
+      .img
+        width 80px
+        height 80px
+        margin-right 16px
+        border-radius 6px
+      .txt
+        flex 1
+        font-size 28px

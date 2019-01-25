@@ -41,10 +41,11 @@ class Footer extends Component {
         <AtTabBar
           fixed
           tabList={[
-            { title: '首页',iconPrefixClass: 'iconfont', iconType: 'home', text: '' },
+            { title: '首页',iconPrefixClass: 'iconfont', iconType: 'home', text: '', color: '#f03d37' },
             { title: '订单', iconPrefixClass: 'iconfont', iconType: 'order'},
             { title: '我的', iconPrefixClass: 'iconfont', iconType: 'wode'}
           ]}
+          selectedColor='#f03d37'
           onClick={this.tabClick.bind(this)}
           current={this.props.curInd}
         />

@@ -7,7 +7,7 @@
   z-index 9
   .main
     height 100%
-    width 0
+    width 100%
     position relative
   .mask
     position absolute
@@ -36,3 +36,9 @@
       display block
       background-color #fff
       border-radius 0
+      &::after
+        border-radius 0
+        border 0
+.inhide
+    display none
+    overflow hidden
